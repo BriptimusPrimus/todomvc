@@ -16,6 +16,14 @@ function todos(state, action) {
                 return item.id !== action.id
             });
 
+        case actions.TOGGLE_TODO:
+            return state.map(function(item) {
+                return item.id === action.id ?
+                    Object.assign({}, item, {
+                        done: !item.done
+                    }) : item
+            });
+
         default:
             return state;
     }

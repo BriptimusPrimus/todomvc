@@ -23,7 +23,8 @@ function AddArea(props) {
                 }
             ),
             d('button', {
-                    events: {
+                    id: "add-todo",
+                    on: {
                         click: addButtonClickHandler
                     },
                     style: 'margin-left: 10px;'

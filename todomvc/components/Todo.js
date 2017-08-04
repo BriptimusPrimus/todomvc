@@ -41,15 +41,16 @@ function Todo(props) {
         },
         [
             d('span', {
-                    events: {
+                    on: {
                         click: clickHandler(props.id)
                     },
+                    style: props.done ? 'text-decoration: line-through;' : ''
                 },
                 props.text
             ),
             d('a', {
                     href: '#',
-                    events: {
+                    on: {
                         click: removeClickHandler(props.id)
                     },
                     style: 'margin-left: 20px'
