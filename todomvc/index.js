@@ -28,8 +28,16 @@ document.body.appendChild(root);
 
 $$$.place(
     App({
-        initialState: initialState
+        initialState: initialState,
+        callback: domReady
     }),
     root
 );
+
+domReady();
+
+function domReady() {
+    var inputEl = document.querySelector('#todo-description');
+    inputEl && inputEl.focus();
+}
 

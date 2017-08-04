@@ -11,14 +11,14 @@ function dom(element, attributes, children) {
     attributes = attributes || {};
     Object.keys(attributes)
         .filter(function(item) {
-            return item !== 'events'
+            return item !== 'on'
         })
         .forEach(function(key) {
             newEl.setAttribute(key, attributes[key]);
         });
 
     // Bind events
-    events = attributes.events || {};
+    events = attributes.on || {};
     Object.keys(events)
         .forEach(function(evt) {
             newEl.addEventListener(evt, events[evt]);
@@ -67,6 +67,9 @@ function register(options) {
 
         // Hold currently active node for the next time
         oldComponent = newComponent;
+
+        // Execute callback if any
+        options.callback && options.callback();
     }
 
     store.subscribe(render);

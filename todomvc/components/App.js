@@ -19,7 +19,11 @@ var App = function App(props) {
     var store;
 
     function onTodoClick(id, event) {
-        return;
+        if (!id) {
+            return;
+        }
+
+        store.dispatch(actions.toggleTodo(id), true);
     }
 
     function onRemoveClick(id, event) {
@@ -74,7 +78,8 @@ var App = function App(props) {
         component: component,
         view: view,
         state: props.initialState,
-        reducer: reducer
+        reducer: reducer,
+        callback: props.callback
     });
 
     // All component functions (stateless or stateful)
