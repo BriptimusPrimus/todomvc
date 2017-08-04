@@ -4,21 +4,7 @@ var $$$ = require('./lib/state-manager');
 var App = require('./components/App');
 
 var initialState = {
-    todos: [
-        {
-            id: 1, 
-            text: 'do one',
-            done: false
-        }, {
-            id: 2,
-            text: 'do two',
-            done: false
-        }, {
-            id: 3,
-            text: 'do three',
-            done: false
-        }
-    ],
+    todos: [],
     filer: 'all'
 };
 
@@ -38,6 +24,9 @@ domReady();
 
 function domReady() {
     var inputEl = document.querySelector('#todo-description');
-    inputEl && inputEl.focus();
+    if (inputEl) {
+        inputEl.value = '';
+        inputEl.focus();
+    }
 }
 
