@@ -3,7 +3,8 @@
 var actions = {
     ADD_TODO: 'ADD_TODO',
     REMOVE_TODO: 'REMOVE_TODO',
-    TOGGLE_TODO: 'TOGGLE_TODO'
+    TOGGLE_TODO: 'TOGGLE_TODO',
+    ITERATE_TODO: 'ITERATE_TODO'
 }
 
 actions.addTodo = function addTodo(todo) {
@@ -24,6 +25,12 @@ actions.toggleTodo = function toggleTodo(id) {
     return {
         type: actions.TOGGLE_TODO,
         id: id
+    }
+}
+
+actions.iterateTodo = function iterateTodo() {
+    return {
+        type: actions.ITERATE_TODO
     }
 }
 

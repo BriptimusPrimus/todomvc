@@ -5,10 +5,17 @@
 //     <span><a href="#">X</a></span>
 // </li>
 
-
-var d = require('../lib/state-manager').dom;
+var $$$ = require('../lib/state-manager');
+var reducer = require('../reducers').todo;
+var actions = require('../actions');
 
 function Todo(props) {
+    var d = $$$.dom;
+    var initialState = {
+        iteration: 0
+    }
+    var component, store;
+
     function clickHandler(id) {
         return function(event) {
             event.preventDefault();
@@ -25,7 +32,18 @@ function Todo(props) {
             console.log('event: ', event);
             props.onRemoveClick(id, event);
         }
-    }    
+    }
+
+    function iterate() {
+        if (props.done) {
+            return;
+        }
+
+        setTimeout(function() {
+            store.dispatch(actions.iterateTodo(), true);
+            iterate();
+        }, 1000);
+    }
 
     var liStyle = [
         'text-align: right',
@@ -35,30 +53,57 @@ function Todo(props) {
         'cursor: pointer'
     ].join(';');
 
-    return d('li', {
-            id: props.id,
-            style: liStyle
-        },
-        [
-            d('span', {
-                    on: {
-                        click: clickHandler(props.id)
+    var color = {
+        0: '#000',
+        1: '#F00',
+        2: '#0F0',
+        3: '#00F',
+        4: '#FF0',
+        5: '#F80',
+        6: '#F0F',
+        7: '#888'
+    };
+
+    function view(state) {
+        return d('li', {
+                id: props.id,
+                style: liStyle
+            },
+            [
+                d('span', {
+                        on: {
+                            click: clickHandler(props.id)
+                        },
+                        style: props.done ? 'text-decoration: line-through;' :
+                            'color: ' + (color[state.iteration] || '#FFF')
                     },
-                    style: props.done ? 'text-decoration: line-through;' : ''
-                },
-                props.text
-            ),
-            d('a', {
-                    href: '#',
-                    on: {
-                        click: removeClickHandler(props.id)
+                    props.text
+                ),
+                d('a', {
+                        href: '#',
+                        on: {
+                            click: removeClickHandler(props.id)
+                        },
+                        style: 'margin-left: 20px'
                     },
-                    style: 'margin-left: 20px'
-                },
-                'X'
-            )
-        ]
-    );
+                    'X'
+                )
+            ]
+        );
+    }
+
+    component = view(initialState);
+
+    store = $$$.register({
+        component: component,
+        view: view,
+        state: initialState,
+        reducer: reducer
+    });
+
+    iterate();
+
+    return component;
 }
 
 module.exports = Todo;
