@@ -1,4 +1,4 @@
-'use strict';
+
 
 const { storeFactory } = require('./store');
 
@@ -65,7 +65,7 @@ function register({ view, store, callback }) {
     const newComponent = view(newState);
 
     // Replace old version with new version
-    const parentNode = component.parentNode;
+    const {parentNode} = component;
     parentNode.replaceChild(newComponent, component);
 
     // Hold currently active node for the next time

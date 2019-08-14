@@ -1,17 +1,17 @@
-'use strict';
 
-var pubsubFactory = require('./pubsub').pubsubFactory;
+
+const {pubsubFactory} = require('./pubsub');
 
 function storeFactory(state, reducer) {
-  var _state = state || {};
-  var pubsub = pubsubFactory();
+  let _state = state || {};
+  const pubsub = pubsubFactory();
 
   function subscribe(fn) {
     pubsub.subscribe('STATE_UPDATED', fn);
   }
 
   function dispatch(action, trigger) {
-    var newState;
+    let newState;
 
     // Reduce the state according to the action
     if (reducer) {
@@ -35,12 +35,12 @@ function storeFactory(state, reducer) {
   }
 
   return {
-    subscribe: subscribe,
-    dispatch: dispatch,
-    getState: getState
+    subscribe,
+    dispatch,
+    getState
   };
 }
 
 module.exports = {
-  storeFactory: storeFactory
+  storeFactory
 };

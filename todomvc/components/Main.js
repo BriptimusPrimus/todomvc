@@ -1,4 +1,4 @@
-'use strict';
+
 
 // <div id="main">
 //     <Todos

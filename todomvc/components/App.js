@@ -1,4 +1,4 @@
-'use strict';
+
 
 const { createStore, register } = require('../lib/state-manager');
 const Main = require('./Main');

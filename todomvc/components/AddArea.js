@@ -1,4 +1,4 @@
-'use strict';
+
 
 // <form>
 //     <input id="todo-description" type="text">

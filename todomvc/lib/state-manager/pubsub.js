@@ -1,10 +1,10 @@
-'use strict';
+
 
 function pubsubFactory() {
-  var topics = {};
+  const topics = {};
 
   function publish(topic, arg) {
-    var subscribers, len;
+    let subscribers; let len;
 
     if (!topics[topic]) {
       return false;
@@ -29,16 +29,16 @@ function pubsubFactory() {
     }
 
     topics[topic].push({
-      func: func
+      func
     });
   }
 
   return {
-    publish: publish,
-    subscribe: subscribe
+    publish,
+    subscribe
   };
 }
 
 module.exports = {
-  pubsubFactory: pubsubFactory
+  pubsubFactory
 };

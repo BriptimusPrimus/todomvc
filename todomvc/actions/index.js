@@ -1,4 +1,4 @@
-'use strict';
+
 
 const actions = {
   ADD_TODO: 'ADD_TODO',
@@ -9,21 +9,21 @@ const actions = {
 actions.addTodo = function addTodo(todo) {
   return {
     type: actions.ADD_TODO,
-    todo: todo
+    todo
   };
 };
 
 actions.removeTodo = function removeTodo(id) {
   return {
     type: actions.REMOVE_TODO,
-    id: id
+    id
   };
 };
 
 actions.toggleTodo = function toggleTodo(id) {
   return {
     type: actions.TOGGLE_TODO,
-    id: id
+    id
   };
 };
 

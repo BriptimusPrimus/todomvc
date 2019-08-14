@@ -28,7 +28,7 @@ function controllersFactory(store) {
     dispatch(
       addTodo({
         id: ++count,
-        text: text
+        text
       }),
       true
     );

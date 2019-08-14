@@ -1,4 +1,4 @@
-'use strict';
+
 
 // <li>
 //     <span id="2">todo2</span>
@@ -37,7 +37,7 @@ function Todo({ id, text, done, onClick, onRemoveClick }) {
   return d(
     'li',
     {
-      id: id,
+      id,
       style: liStyle
     },
     [

@@ -1,9 +1,9 @@
-'use strict';
+
 
 const { place } = require('./lib/state-manager');
 const App = require('./components/App');
 
-var initialState = {
+const initialState = {
   todos: [
     {
       id: 100,
@@ -60,7 +60,7 @@ document.body.appendChild(root);
 
 place(
   App({
-    initialState: initialState,
+    initialState,
     callback: domReady
   }),
   root
@@ -69,7 +69,7 @@ place(
 domReady();
 
 function domReady() {
-  var inputEl = document.querySelector('#todo-description');
+  const inputEl = document.querySelector('#todo-description');
   if (inputEl) {
     inputEl.value = '';
     inputEl.focus();
