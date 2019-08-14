@@ -22,18 +22,22 @@ var initialState = {
         done: false
     }, {
         id: 104,
-        text: 'improve state-manager lib',
+        text: 'hook with huskey and lint-staged',
         done: false
     }, {
         id: 105,
-        text: 'build with webpack',
-        done: false
-    }, {
-        id: 106,
-        text: 'write tic tac toe app',
+        text: 'improve state-manager lib',
         done: false
     }, {
         id: 107,
+        text: 'build with webpack',
+        done: false
+    }, {
+        id: 107,
+        text: 'write tic tac toe app',
+        done: false
+    }, {
+        id: 108,
         text: 'transpile jsx',
         done: false
     }],
