@@ -1,5 +1,5 @@
 'use strict';
 
-var implementation = require('./impl2');
+var implementation = require('./impl1');
 
 module.exports = implementation;
