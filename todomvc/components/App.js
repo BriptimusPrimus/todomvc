@@ -6,80 +6,37 @@
 //     />
 // </div>
 
-var $$$ = require('../lib/state-manager');
-var Todos = require('./Todos');
-var AddArea = require('./AddArea');
-var reducer = require('../reducers').app;
-var actions = require('../actions');
+const { createStore, register } = require('../lib/state-manager');
+const Main = require('./Main');
+const { app: reducer } = require('../reducers');
+const { controllersFactory } = require('../controllers');
 
-var App = function App(props) {
-    var d = $$$.dom;
-    var count = 0;
-    var component;
-    var store;
+const App = function App({ initialState, callback }) {
+    // Returns a store with a dispatch function to
+    // trigger state changes by dispatching actions.
+    const store = createStore(initialState, reducer);
 
-    function onTodoClick(id, event) {
-        if (!id) {
-            return;
-        }
-
-        store.dispatch(actions.toggleTodo(id), true);
-    }
-
-    function onRemoveClick(id, event) {
-        if (!id) {
-            return;
-        }
-
-        store.dispatch(actions.removeTodo(id), true);
-    }
-
-    function onAddButtonClick(text, event) {
-        if (!text) {
-            return;
-        }
-        
-        store.dispatch(actions.addTodo({
-            id: ++count,
-            text: text
-        }), true);
-    }
-
-    function mapStateToProps(state) {
-        return {
-            todos: state.todos,
-            onTodoClick: onTodoClick,
-            onRemoveClick: onRemoveClick
-        }
-    }
+    const {
+        onTodoClick,
+        onRemoveClick,
+        onAddButtonClick
+    } = controllersFactory(store);
 
     function view(state) {
-        return d('div', {
-                id: 'app',
-                style: 'margin: 100px 10px 50px 50px;'
-            }, [
-                Todos(mapStateToProps(state)),
-                AddArea({
-                    onAddButtonClick: onAddButtonClick
-                })
-            ]
-        );
+        return Main({
+            todos: state.todos,
+            onTodoClick,
+            onRemoveClick,
+            onAddButtonClick
+        });
     }
 
-    // Use initial state when rendering component for the first time
-    component = view(props.initialState);
-
     // In order to make a component stateful, we must
-    // register the root node and the rendering function.
-    // Note: registering a reducer is optional.
-    // Register returns a store with a dispatch function to
-    // trigger state changes by dispatching actions.
-    store = $$$.register({
-        component: component,
-        view: view,
-        state: props.initialState,
-        reducer: reducer,
-        callback: props.callback
+    // register the rendering function (view) with the store.
+    const component = register({
+        view,
+        store,
+        callback
     });
 
     // All component functions (stateless or stateful)

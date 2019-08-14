@@ -47,37 +47,42 @@ function place(el, container) {
         return;
     }
     container.innerHtml = '';
-    container.appendChild(el);    
+    container.appendChild(el);
 }
 
-function register(options) {
-    if (!options.component || !options.view) {
+function createStore(state = {}, reducer) {
+    return storeFactory(state, reducer);
+}
+
+function register({view, store, callback}) {
+    if (!view || !store) {
         return;
     }
-    var oldComponent = options.component;
-    var store = storeFactory(options.state, options.reducer);
+    // Use initial state when rendering component for the first time
+    var component = view(store.getState());
 
     function render(newState) {
         // Create new version of the component using new state
-        var newComponent = options.view(newState);
+        var newComponent = view(newState);
 
         // Replace old version with new version
-        var parentNode = oldComponent.parentNode;
-        parentNode.replaceChild(newComponent, oldComponent);
+        var parentNode = component.parentNode;
+        parentNode.replaceChild(newComponent, component);
 
         // Hold currently active node for the next time
-        oldComponent = newComponent;
+        component = newComponent;
 
         // Execute callback if any
-        options.callback && options.callback();
+        callback && callback();
     }
 
     store.subscribe(render);
-    return store;    
+    return component;
 }
 
 module.exports = {
-    dom: dom,
-    place: place,
-    register: register
+    dom,
+    place,
+    createStore,
+    register
 }
