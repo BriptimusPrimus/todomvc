@@ -1,47 +1,46 @@
-const {
-    toggleTodo,
-    removeTodo,
-    addTodo
-} = require('../actions');
+const { toggleTodo, removeTodo, addTodo } = require('../actions');
 
 function controllersFactory(store) {
-    let count = 0;
-    const { dispatch } = store;
+  let count = 0;
+  const { dispatch } = store;
 
-    function onTodoClick(id, event) {
-        if (!id) {
-            return;
-        }
-
-        dispatch(toggleTodo(id), true);
+  function onTodoClick(id, event) {
+    if (!id) {
+      return;
     }
 
-    function onRemoveClick(id, event) {
-        if (!id) {
-            return;
-        }
+    dispatch(toggleTodo(id), true);
+  }
 
-        dispatch(removeTodo(id), true);
+  function onRemoveClick(id, event) {
+    if (!id) {
+      return;
     }
 
-    function onAddButtonClick(text, event) {
-        if (!text) {
-            return;
-        }
-        
-        dispatch(addTodo({
-            id: ++count,
-            text: text
-        }), true);
+    dispatch(removeTodo(id), true);
+  }
+
+  function onAddButtonClick(text, event) {
+    if (!text) {
+      return;
     }
 
-    return {
-        onTodoClick,
-        onRemoveClick,
-        onAddButtonClick
-    };
+    dispatch(
+      addTodo({
+        id: ++count,
+        text: text
+      }),
+      true
+    );
+  }
+
+  return {
+    onTodoClick,
+    onRemoveClick,
+    onAddButtonClick
+  };
 }
 
 module.exports = {
-    controllersFactory
+  controllersFactory
 };

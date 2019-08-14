@@ -1,3 +1,6 @@
 module.exports = {
-  extends: ['airbnb']
+  extends: ['airbnb', 'prettier'],
+  rules: {
+    'prefer-object-spread': [0]
+  }
 };
