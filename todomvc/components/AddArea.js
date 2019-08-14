@@ -1,5 +1,3 @@
-
-
 // <form>
 //     <input id="todo-description" type="text">
 //     <button>Add Todo<button>

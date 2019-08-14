@@ -1,5 +1,3 @@
-
-
 const { storeFactory } = require('./store');
 
 function dom(element, attributes, children) {
@@ -65,7 +63,7 @@ function register({ view, store, callback }) {
     const newComponent = view(newState);
 
     // Replace old version with new version
-    const {parentNode} = component;
+    const { parentNode } = component;
     parentNode.replaceChild(newComponent, component);
 
     // Hold currently active node for the next time

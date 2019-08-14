@@ -1,5 +1,3 @@
-
-
 const { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } = require('../actions');
 
 function todos(state, action) {

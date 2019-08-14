@@ -1,10 +1,9 @@
-
-
 function pubsubFactory() {
   const topics = {};
 
   function publish(topic, arg) {
-    let subscribers; let len;
+    let subscribers;
+    let len;
 
     if (!topics[topic]) {
       return false;

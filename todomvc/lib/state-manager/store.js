@@ -1,6 +1,4 @@
-
-
-const {pubsubFactory} = require('./pubsub');
+const { pubsubFactory } = require('./pubsub');
 
 function storeFactory(state, reducer) {
   let _state = state || {};

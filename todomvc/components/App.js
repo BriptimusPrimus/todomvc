@@ -1,5 +1,3 @@
-
-
 const { createStore, register } = require('../lib/state-manager');
 const Main = require('./Main');
 const { app: reducer } = require('../reducers');

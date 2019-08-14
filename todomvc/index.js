@@ -1,5 +1,3 @@
-
-
 const { place } = require('./lib/state-manager');
 const App = require('./components/App');
 

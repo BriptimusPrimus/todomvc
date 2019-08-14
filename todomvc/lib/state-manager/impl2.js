@@ -1,5 +1,3 @@
-
-
 // This implementation relies on snabbdom virtual dom
 
 // virtual dom library
@@ -13,7 +11,7 @@ const patch = snabbdom.init([
 ]);
 const h = require('snabbdom/h').default; // helper function for creating vnodes
 
-const {storeFactory} = require('./store');
+const { storeFactory } = require('./store');
 
 function dom(element, attributes, children) {
   const props = {};

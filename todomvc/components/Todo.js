@@ -1,5 +1,3 @@
-
-
 // <li>
 //     <span id="2">todo2</span>
 //     <span><a href="#">X</a></span>
