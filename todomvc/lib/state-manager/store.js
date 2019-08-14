@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const { pubsubFactory } = require('./pubsub');
 
 function storeFactory(state, reducer) {

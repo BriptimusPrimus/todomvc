@@ -12,12 +12,12 @@ function todos(state, action) {
       ]);
 
     case REMOVE_TODO:
-      return state.filter(function(item) {
+      return state.filter(item => {
         return item.id !== action.id;
       });
 
     case TOGGLE_TODO:
-      return state.map(function(item) {
+      return state.map(item => {
         return item.id === action.id
           ? Object.assign({}, item, {
               done: !item.done
@@ -30,7 +30,7 @@ function todos(state, action) {
   }
 }
 
-function filter(state, action) {
+function filter(state) {
   return state;
 }
 

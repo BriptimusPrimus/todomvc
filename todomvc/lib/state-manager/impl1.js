@@ -1,23 +1,21 @@
 const { storeFactory } = require('./store');
 
-function dom(element, attributes, children) {
+function dom(element, attributes = {}, children) {
   // Create new DOM element
   const newEl = document.createElement(element);
-  let events;
 
   // Set element attributes
-  attributes = attributes || {};
   Object.keys(attributes)
-    .filter(function(item) {
+    .filter(item => {
       return item !== 'on';
     })
-    .forEach(function(key) {
+    .forEach(key => {
       newEl.setAttribute(key, attributes[key]);
     });
 
   // Bind events
-  events = attributes.on || {};
-  Object.keys(events).forEach(function(evt) {
+  const events = attributes.on || {};
+  Object.keys(events).forEach(evt => {
     newEl.addEventListener(evt, events[evt]);
   });
 
@@ -27,12 +25,13 @@ function dom(element, attributes, children) {
     newEl.textContent = children;
     // children is an array of DOM elements, append children to element:
   } else if (Array.isArray(children)) {
-    children.forEach(function(child) {
-      child && newEl.appendChild(child);
+    children.forEach(child => {
+      newEl.appendChild(child);
     });
 
     // children is not a string nor an array, do nothing
   } else if (children) {
+    // eslint-disable-next-line no-console
     console.warn('children is not text nor is a list of elements');
   }
 
@@ -43,6 +42,7 @@ function place(el, container) {
   if (!container || !el) {
     return;
   }
+  // eslint-disable-next-line no-param-reassign
   container.innerHtml = '';
   container.appendChild(el);
 }
@@ -53,7 +53,7 @@ function createStore(state = {}, reducer) {
 
 function register({ view, store, callback }) {
   if (!view || !store) {
-    return;
+    return undefined;
   }
   // Use initial state when rendering component for the first time
   let component = view(store.getState());
@@ -70,7 +70,9 @@ function register({ view, store, callback }) {
     component = newComponent;
 
     // Execute callback if any
-    callback && callback();
+    if (callback) {
+      callback();
+    }
   }
 
   store.subscribe(render);

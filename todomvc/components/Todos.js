@@ -13,7 +13,7 @@ const { dom: d } = require('../lib/state-manager');
 const Todo = require('./Todo');
 
 function Todos({ todos, onTodoClick, onRemoveClick }) {
-  function resolveList(todos) {
+  function resolveList() {
     return todos.map(item => {
       return Todo({
         id: item.id,
@@ -30,7 +30,7 @@ function Todos({ todos, onTodoClick, onRemoveClick }) {
     {
       style: 'list-style: none;'
     },
-    resolveList(todos)
+    resolveList()
   );
 }
 

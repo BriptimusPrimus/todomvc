@@ -16,7 +16,7 @@ const initialState = {
     {
       id: 102,
       text: 'format with prettier',
-      done: false
+      done: true
     },
     {
       id: 103,
@@ -34,7 +34,7 @@ const initialState = {
       done: false
     },
     {
-      id: 107,
+      id: 106,
       text: 'build with webpack',
       done: false
     },
@@ -52,6 +52,14 @@ const initialState = {
   filer: 'all'
 };
 
+function domReady() {
+  const inputEl = document.querySelector('#todo-description');
+  if (inputEl) {
+    inputEl.value = '';
+    inputEl.focus();
+  }
+}
+
 const root = document.createElement('div');
 root.id = 'root';
 document.body.appendChild(root);
@@ -65,11 +73,3 @@ place(
 );
 
 domReady();
-
-function domReady() {
-  const inputEl = document.querySelector('#todo-description');
-  if (inputEl) {
-    inputEl.value = '';
-    inputEl.focus();
-  }
-}

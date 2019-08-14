@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 // This implementation relies on snabbdom virtual dom
 
 // virtual dom library
@@ -17,10 +18,10 @@ function dom(element, attributes, children) {
   const props = {};
 
   Object.keys(attributes)
-    .filter(function(item) {
+    .filter(item => {
       return item !== 'on';
     })
-    .forEach(function(key) {
+    .forEach(key => {
       props[key] = attributes[key];
     });
 
@@ -40,7 +41,7 @@ function place(el, container) {
 
 function register(options) {
   if (!options.component || !options.view) {
-    return;
+    return undefined;
   }
   let oldComponent = options.component;
   const store = storeFactory(options.state, options.reducer);
@@ -53,7 +54,9 @@ function register(options) {
     oldComponent = patch(oldComponent, newComponent);
 
     // Execute callback if any
-    options.callback && options.callback();
+    if (options.callback) {
+      options.callback();
+    }
   }
 
   store.subscribe(render);

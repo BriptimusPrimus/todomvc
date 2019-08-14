@@ -4,7 +4,7 @@ function controllersFactory(store) {
   let count = 0;
   const { dispatch } = store;
 
-  function onTodoClick(id, event) {
+  function onTodoClick(id) {
     if (!id) {
       return;
     }
@@ -12,7 +12,7 @@ function controllersFactory(store) {
     dispatch(toggleTodo(id), true);
   }
 
-  function onRemoveClick(id, event) {
+  function onRemoveClick(id) {
     if (!id) {
       return;
     }
@@ -20,14 +20,15 @@ function controllersFactory(store) {
     dispatch(removeTodo(id), true);
   }
 
-  function onAddButtonClick(text, event) {
+  function onAddButtonClick(text) {
     if (!text) {
       return;
     }
 
+    count += 1;
     dispatch(
       addTodo({
-        id: ++count,
+        id: count,
         text
       }),
       true
