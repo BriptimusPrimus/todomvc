@@ -1,11 +1,5 @@
 'use strict';
 
-// <div id="app">
-//     <Todos 
-//         todos: [{}, {}, {}]
-//     />
-// </div>
-
 const { createStore, register } = require('../lib/state-manager');
 const Main = require('./Main');
 const { app: reducer } = require('../reducers');

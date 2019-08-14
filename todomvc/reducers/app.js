@@ -1,22 +1,26 @@
 'use strict';
 
-var actions = require('../actions');
+const {
+    ADD_TODO,
+    REMOVE_TODO,
+    TOGGLE_TODO
+} = require('../actions');
 
 function todos(state, action) {
     switch (action.type) {
-        case actions.ADD_TODO:
+        case ADD_TODO:
             return state.concat([{
                 id: action.todo.id,
                 text: action.todo.text,
                 done: false
             }]);
 
-        case actions.REMOVE_TODO:
+        case REMOVE_TODO:
             return state.filter(function(item) {
                 return item.id !== action.id
             });
 
-        case actions.TOGGLE_TODO:
+        case TOGGLE_TODO:
             return state.map(function(item) {
                 return item.id === action.id ?
                     Object.assign({}, item, {

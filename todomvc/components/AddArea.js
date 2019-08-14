@@ -5,13 +5,13 @@
 //     <button>Add Todo<button>
 // <form/>
 
-var d = require('../lib/state-manager').dom;
+const { dom: d } = require('../lib/state-manager');
 
-function AddArea(props) {
+function AddArea({ onAddButtonClick }) {
     function addButtonClickHandler(event) {
-        var todoText = document.querySelector('#todo-description').value;
+        const todoText = document.querySelector('#todo-description').value;
         event.preventDefault();
-        props.onAddButtonClick(todoText, event);
+        onAddButtonClick(todoText, event);
     }
 
     return d('form', {}, [

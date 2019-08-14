@@ -6,15 +6,21 @@
 // </li>
 
 
-var d = require('../lib/state-manager').dom;
+const { dom: d } = require('../lib/state-manager');
 
-function Todo(props) {
+function Todo({
+    id,
+    text,
+    done,
+    onClick,
+    onRemoveClick
+}) {
     function clickHandler(id) {
         return function(event) {
             event.preventDefault();
             console.log('clickHandler, id: ', id);
             console.log('event: ', event);
-            props.onClick(id, event);
+            onClick(id, event);
         }
     }
 
@@ -23,11 +29,11 @@ function Todo(props) {
             event.preventDefault();
             console.log('removeClickHandler, id: ', id);
             console.log('event: ', event);
-            props.onRemoveClick(id, event);
+            onRemoveClick(id, event);
         }
     }    
 
-    var liStyle = [
+    const liStyle = [
         'text-align: right',
         'padding: 5px',
         'margin: 2px',
@@ -36,22 +42,22 @@ function Todo(props) {
     ].join(';');
 
     return d('li', {
-            id: props.id,
+            id: id,
             style: liStyle
         },
         [
             d('span', {
                     on: {
-                        click: clickHandler(props.id)
+                        click: clickHandler(id)
                     },
-                    style: props.done ? 'text-decoration: line-through;' : ''
+                    style: done ? 'text-decoration: line-through;' : ''
                 },
-                props.text
+                text
             ),
             d('a', {
                     href: '#',
                     on: {
-                        click: removeClickHandler(props.id)
+                        click: removeClickHandler(id)
                     },
                     style: 'margin-left: 20px'
                 },

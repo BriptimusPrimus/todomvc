@@ -1,11 +1,11 @@
 'use strict';
 
-var storeFactory = require('./store').storeFactory;
+const { storeFactory } = require('./store');
 
 function dom(element, attributes, children) {
     // Create new DOM element
-    var newEl = document.createElement(element);
-    var events;
+    const newEl = document.createElement(element);
+    let events;
 
     // Set element attributes
     attributes = attributes || {};
@@ -29,7 +29,7 @@ function dom(element, attributes, children) {
     if (typeof children === 'string') {
         newEl.textContent = children;
         // children is an array of DOM elements, append children to element:
-    } else if (children instanceof Array) {
+    } else if (Array.isArray(children)) {
         children.forEach(function(child) {
             child && newEl.appendChild(child);
         });
@@ -39,7 +39,7 @@ function dom(element, attributes, children) {
         console.warn('children is not text nor is a list of elements');
     }
 
-    return newEl;    
+    return newEl;
 }
 
 function place(el, container) {
@@ -59,14 +59,14 @@ function register({view, store, callback}) {
         return;
     }
     // Use initial state when rendering component for the first time
-    var component = view(store.getState());
+    let component = view(store.getState());
 
     function render(newState) {
         // Create new version of the component using new state
-        var newComponent = view(newState);
+        const newComponent = view(newState);
 
         // Replace old version with new version
-        var parentNode = component.parentNode;
+        const parentNode = component.parentNode;
         parentNode.replaceChild(newComponent, component);
 
         // Hold currently active node for the next time
