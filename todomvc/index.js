@@ -1,18 +1,50 @@
 'use strict';
 
-var $$$ = require('./lib/state-manager');
-var App = require('./components/App');
+const { place } = require('./lib/state-manager');
+const App = require('./components/App');
 
 var initialState = {
-    todos: [],
+    todos: [{
+        id: 100,
+        text: 'es6 rewrite',
+        done: true
+    }, {
+        id: 101,
+        text: 'lint with eslint',
+        done: false
+    }, {
+        id: 102,
+        text: 'format with prettier',
+        done: false
+    }, {
+        id: 103,
+        text: 'test with jest',
+        done: false
+    }, {
+        id: 104,
+        text: 'improve state-manager lib',
+        done: false
+    }, {
+        id: 105,
+        text: 'build with webpack',
+        done: false
+    }, {
+        id: 106,
+        text: 'write tic tac toe app',
+        done: false
+    }, {
+        id: 107,
+        text: 'transpile jsx',
+        done: false
+    }],
     filer: 'all'
 };
 
-var root = document.createElement('div');
+const root = document.createElement('div');
 root.id = 'root';
 document.body.appendChild(root);
 
-$$$.place(
+place(
     App({
         initialState: initialState,
         callback: domReady
@@ -29,4 +61,3 @@ function domReady() {
         inputEl.focus();
     }
 }
-

@@ -1,14 +1,15 @@
 'use strict';
 
-// <div id="app">
+// <div id="main">
 //     <Todos 
 //         todos: [{}, {}, {}]
 //     />
+//     <AddArea />
 // </div>
 
-var { dom: d } = require('../lib/state-manager');
-var Todos = require('./Todos');
-var AddArea = require('./AddArea');
+const { dom: d } = require('../lib/state-manager');
+const Todos = require('./Todos');
+const AddArea = require('./AddArea');
 
 function Main({
     todos,
@@ -23,7 +24,7 @@ function Main({
             Todos({
                 todos,
                 onTodoClick,
-                onRemoveClick                    
+                onRemoveClick
             }),
             AddArea({
                 onAddButtonClick

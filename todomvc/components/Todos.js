@@ -11,20 +11,18 @@
 //     />
 // </ul>
 
-var $$$ = require('../lib/state-manager');
-var Todo = require('./Todo');
+const { dom: d } = require('../lib/state-manager');
+const Todo = require('./Todo');
 
-function Todos(props) {
-    var d = $$$.dom;
-
+function Todos({ todos, onTodoClick, onRemoveClick }) {
     function resolveList(todos) {
-        return todos.map(function(item) {
+        return todos.map((item) => {
             return Todo({
                 id: item.id,
                 text: item.text,
                 done: item.done,
-                onClick: props.onTodoClick,
-                onRemoveClick: props.onRemoveClick
+                onClick: onTodoClick,
+                onRemoveClick
             });
         });
     }
@@ -32,7 +30,7 @@ function Todos(props) {
     return d('ul', {
             style: 'list-style: none;'
         },
-        resolveList(props.todos)
+        resolveList(todos)
     );
 }
 
