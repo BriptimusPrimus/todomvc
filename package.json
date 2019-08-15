@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "budo index.js --live",
+    "test": "jest --coverage",
     "lint": "eslint todomvc",
     "format": "prettier \"**/*.+(js|jsx|json|css)\" --write",
     "validate-format": "prettier \"**/*.+(js|jsx|json|css)\" --list-different"
@@ -22,6 +22,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.8.0",
     "prettier": "^1.18.2"
   },
   "author": "briptimus",

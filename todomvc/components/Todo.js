@@ -7,14 +7,14 @@ const { dom: d } = require('../lib/state-manager');
 
 function Todo({ id, text, done, onClick, onRemoveClick }) {
   function clickHandler(todoId) {
-    return (event) => {
+    return event => {
       event.preventDefault();
       onClick(todoId, event);
     };
   }
 
   function removeClickHandler(todoId) {
-    return (event) => {
+    return event => {
       event.preventDefault();
       onRemoveClick(todoId, event);
     };

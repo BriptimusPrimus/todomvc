@@ -11,7 +11,7 @@ const initialState = {
     {
       id: 101,
       text: 'lint with eslint',
-      done: false
+      done: true
     },
     {
       id: 102,
