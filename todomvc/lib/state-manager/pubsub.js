@@ -1,44 +1,42 @@
-'use strict';
-
 function pubsubFactory() {
-    var topics = {};
+  const topics = {};
 
-    function publish(topic, arg) {
-        var subscribers, len;
+  function publish(topic, arg) {
+    let len;
 
-        if (!topics[topic]) {
-            return false;
-        }
-
-        subscribers = topics[topic];
-        len = subscribers ? subscribers.length : 0;
-
-        while (len > 0) {
-            subscribers[len - 1].func(arg);
-            len--;
-        }
+    if (!topics[topic]) {
+      return;
     }
 
-    function subscribe(topic, func) {
-        if (typeof func !== 'function') {
-            return;
-        }
+    const subscribers = topics[topic];
+    len = subscribers ? subscribers.length : 0;
 
-        if (!topics[topic]) {
-            topics[topic] = [];
-        }
+    while (len > 0) {
+      subscribers[len - 1].func(arg);
+      len -= 1;
+    }
+  }
 
-        topics[topic].push({
-            func: func
-        });
+  function subscribe(topic, func) {
+    if (typeof func !== 'function') {
+      return;
     }
 
-    return {
-        publish: publish,
-        subscribe: subscribe
-    }    
+    if (!topics[topic]) {
+      topics[topic] = [];
+    }
+
+    topics[topic].push({
+      func
+    });
+  }
+
+  return {
+    publish,
+    subscribe
+  };
 }
 
 module.exports = {
-    pubsubFactory: pubsubFactory
+  pubsubFactory
 };
