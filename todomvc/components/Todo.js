@@ -52,6 +52,7 @@ function Todo({ id, text, done, onClick, onRemoveClick }) {
           on: {
             click: removeClickHandler(id)
           },
+          'data-testid': `remove-${id}`,
           style: 'margin-left: 20px'
         },
         'X'

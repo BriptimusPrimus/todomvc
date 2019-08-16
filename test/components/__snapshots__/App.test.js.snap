@@ -18,6 +18,7 @@ exports[`App test Should render 1`] = `
         lint with eslint
       </span>
       <a
+        data-testid="remove-101"
         href="#"
         style="margin-left: 20px"
       >
@@ -34,6 +35,7 @@ exports[`App test Should render 1`] = `
         format with prettier
       </span>
       <a
+        data-testid="remove-102"
         href="#"
         style="margin-left: 20px"
       >
@@ -50,6 +52,7 @@ exports[`App test Should render 1`] = `
         test with jest
       </span>
       <a
+        data-testid="remove-103"
         href="#"
         style="margin-left: 20px"
       >
@@ -66,6 +69,7 @@ exports[`App test Should render 1`] = `
         hook with huskey and lint-staged
       </span>
       <a
+        data-testid="remove-104"
         href="#"
         style="margin-left: 20px"
       >
@@ -74,6 +78,11 @@ exports[`App test Should render 1`] = `
     </li>
   </ul>
   <form>
+    <label
+      for="todo-description"
+    >
+      Task: 
+    </label>
     <input
       id="todo-description"
       placeholder="Todo description"

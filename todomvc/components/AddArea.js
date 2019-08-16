@@ -13,6 +13,13 @@ function AddArea({ onAddButtonClick }) {
   }
 
   return d('form', {}, [
+    d(
+      'label',
+      {
+        for: 'todo-description'
+      },
+      'Task: '
+    ),
     d('input', {
       id: 'todo-description',
       type: 'text',

@@ -21,7 +21,7 @@ const initialState = {
     {
       id: 103,
       text: 'test with jest',
-      done: false
+      done: true
     },
     {
       id: 104,

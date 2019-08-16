@@ -3,15 +3,19 @@ module.exports = {
   testEnvironment: 'jsdom',
   testMatch: ['**/test/**/*.test.js'],
   collectCoverage: true,
-  collectCoverageFrom: ['todomvc/**/*.js', '!todomvc/index.js'],
+  collectCoverageFrom: [
+    'todomvc/**/*.js',
+    '!todomvc/index.js',
+    '!todomvc/lib/state-manager/**'
+  ],
   coverageDirectory: './coverage',
   coverageReporters: ['cobertura', 'text', 'lcov'],
   coverageThreshold: {
     global: {
-      statements: 50,
-      branches: 20,
-      functions: 40,
-      lines: 50
+      statements: 95,
+      branches: 75,
+      functions: 100,
+      lines: 95
     }
   }
 };
