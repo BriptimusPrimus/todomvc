@@ -26,7 +26,7 @@ const initialState = {
     {
       id: 104,
       text: 'hook with huskey and lint-staged',
-      done: false
+      done: true
     },
     {
       id: 105,
