@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "budo index.js --live",
+    "test": "jest --coverage",
     "lint": "eslint todomvc",
     "format": "prettier \"**/*.+(js|jsx|json|css)\" --write",
     "validate-format": "prettier \"**/*.+(js|jsx|json|css)\" --list-different"
@@ -15,6 +15,7 @@
     "virtual-dom": "^2.1.1"
   },
   "devDependencies": {
+    "@testing-library/dom": "^6.0.1",
     "budo": "^10.0.4",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -22,6 +23,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.8.0",
     "prettier": "^1.18.2"
   },
   "author": "briptimus",
