@@ -1,5 +1,11 @@
 const { storeFactory } = require('./store');
 
+function resolveStyle(style) {
+  return Object.keys(style)
+    .map(key => `${key}:${style[key]};`)
+    .join('');
+}
+
 function dom(element, attributes = {}, children) {
   // Create new DOM element
   const newEl = document.createElement(element);
@@ -7,11 +13,16 @@ function dom(element, attributes = {}, children) {
   // Set element attributes
   Object.keys(attributes)
     .filter(item => {
-      return item !== 'on';
+      return item !== 'on' && item !== 'style';
     })
     .forEach(key => {
       newEl.setAttribute(key, attributes[key]);
     });
+
+  // Set style
+  if (attributes.style !== undefined && attributes.style !== null) {
+    newEl.setAttribute('style', resolveStyle(attributes.style));
+  }
 
   // Bind events
   const events = attributes.on || {};

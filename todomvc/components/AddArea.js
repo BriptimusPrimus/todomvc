@@ -33,7 +33,7 @@ function AddArea({ onAddButtonClick }) {
         on: {
           click: addButtonClickHandler
         },
-        style: 'margin-left: 10px;'
+        style: { 'margin-left': '10px' }
       },
       'Add Todo'
     )

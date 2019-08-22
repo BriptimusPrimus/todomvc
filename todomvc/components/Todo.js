@@ -20,13 +20,13 @@ function Todo({ id, text, done, onClick, onRemoveClick }) {
     };
   }
 
-  const liStyle = [
-    'text-align: right',
-    'padding: 5px',
-    'margin: 2px',
-    'max-width: 200px',
-    'cursor: pointer'
-  ].join(';');
+  const liStyle = {
+    'text-align': 'right',
+    padding: '5px',
+    margin: '2px',
+    'max-width': '200px',
+    cursor: 'pointer'
+  };
 
   return d(
     'li',
@@ -41,7 +41,7 @@ function Todo({ id, text, done, onClick, onRemoveClick }) {
           on: {
             click: clickHandler(id)
           },
-          style: done ? 'text-decoration: line-through;' : ''
+          style: done ? { 'text-decoration': 'line-through' } : undefined
         },
         text
       ),
@@ -53,7 +53,7 @@ function Todo({ id, text, done, onClick, onRemoveClick }) {
             click: removeClickHandler(id)
           },
           'data-testid': `remove-${id}`,
-          style: 'margin-left: 20px'
+          style: { 'margin-left': '20px' }
         },
         'X'
       )

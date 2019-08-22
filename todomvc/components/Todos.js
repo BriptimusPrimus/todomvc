@@ -28,7 +28,7 @@ function Todos({ todos, onTodoClick, onRemoveClick }) {
   return d(
     'ul',
     {
-      style: 'list-style: none;'
+      style: { 'list-style': 'none' }
     },
     resolveList()
   );
