@@ -34,30 +34,28 @@ function Todo({ id, text, done, onClick, onRemoveClick }) {
       id,
       style: liStyle
     },
-    [
-      d(
-        'span',
-        {
-          on: {
-            click: clickHandler(id)
-          },
-          style: done ? { 'text-decoration': 'line-through' } : undefined
+    d(
+      'span',
+      {
+        on: {
+          click: clickHandler(id)
         },
-        text
-      ),
-      d(
-        'a',
-        {
-          href: '#',
-          on: {
-            click: removeClickHandler(id)
-          },
-          'data-testid': `remove-${id}`,
-          style: { 'margin-left': '20px' }
+        style: done ? { 'text-decoration': 'line-through' } : undefined
+      },
+      text
+    ),
+    d(
+      'a',
+      {
+        href: '#',
+        on: {
+          click: removeClickHandler(id)
         },
-        'X'
-      )
-    ]
+        'data-testid': `remove-${id}`,
+        style: { 'margin-left': '20px' }
+      },
+      'X'
+    )
   );
 }
 

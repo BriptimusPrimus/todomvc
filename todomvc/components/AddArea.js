@@ -12,7 +12,9 @@ function AddArea({ onAddButtonClick }) {
     onAddButtonClick(todoText, event);
   }
 
-  return d('form', {}, [
+  return d(
+    'form',
+    {},
     d(
       'label',
       {
@@ -37,7 +39,7 @@ function AddArea({ onAddButtonClick }) {
       },
       'Add Todo'
     )
-  ]);
+  );
 }
 
 module.exports = AddArea;

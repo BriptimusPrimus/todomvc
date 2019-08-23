@@ -6,7 +6,19 @@ function resolveStyle(style) {
     .join('');
 }
 
-function dom(element, attributes = {}, children) {
+function flattenArray(arr) {
+  let result = [];
+  arr.forEach(item => {
+    if (Array.isArray(item)) {
+      result = result.concat(flattenArray(item));
+    } else {
+      result.push(item);
+    }
+  });
+  return result;
+}
+
+function dom(element, attributes = {}, ...children) {
   // Create new DOM element
   const newEl = document.createElement(element);
 
@@ -30,21 +42,12 @@ function dom(element, attributes = {}, children) {
     newEl.addEventListener(evt, events[evt]);
   });
 
-  // Set children
-  // children is a string, append text to element:
-  if (typeof children === 'string') {
-    newEl.textContent = children;
-    // children is an array of DOM elements, append children to element:
-  } else if (Array.isArray(children)) {
-    children.forEach(child => {
-      newEl.appendChild(child);
-    });
-
-    // children is not a string nor an array, do nothing
-  } else if (children) {
-    // eslint-disable-next-line no-console
-    console.warn('children is not text nor is a list of elements');
-  }
+  // Append children
+  flattenArray(children)
+    .map(child =>
+      typeof child === 'string' ? document.createTextNode(child) : child
+    )
+    .forEach(child => newEl.appendChild(child));
 
   return newEl;
 }
