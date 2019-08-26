@@ -1,17 +1,40 @@
 const { storeFactory } = require('./store');
 
-function dom(element, attributes = {}, children) {
+function resolveStyle(style) {
+  return Object.keys(style)
+    .map(key => `${key}:${style[key]};`)
+    .join('');
+}
+
+function flattenArray(arr) {
+  let result = [];
+  arr.forEach(item => {
+    if (Array.isArray(item)) {
+      result = result.concat(flattenArray(item));
+    } else {
+      result.push(item);
+    }
+  });
+  return result;
+}
+
+function dom(element, attributes = {}, ...children) {
   // Create new DOM element
   const newEl = document.createElement(element);
 
   // Set element attributes
   Object.keys(attributes)
     .filter(item => {
-      return item !== 'on';
+      return item !== 'on' && item !== 'style';
     })
     .forEach(key => {
       newEl.setAttribute(key, attributes[key]);
     });
+
+  // Set style
+  if (attributes.style !== undefined && attributes.style !== null) {
+    newEl.setAttribute('style', resolveStyle(attributes.style));
+  }
 
   // Bind events
   const events = attributes.on || {};
@@ -19,21 +42,12 @@ function dom(element, attributes = {}, children) {
     newEl.addEventListener(evt, events[evt]);
   });
 
-  // Set children
-  // children is a string, append text to element:
-  if (typeof children === 'string') {
-    newEl.textContent = children;
-    // children is an array of DOM elements, append children to element:
-  } else if (Array.isArray(children)) {
-    children.forEach(child => {
-      newEl.appendChild(child);
-    });
-
-    // children is not a string nor an array, do nothing
-  } else if (children) {
-    // eslint-disable-next-line no-console
-    console.warn('children is not text nor is a list of elements');
-  }
+  // Append children
+  flattenArray(children)
+    .map(child =>
+      typeof child === 'string' ? document.createTextNode(child) : child
+    )
+    .forEach(child => newEl.appendChild(child));
 
   return newEl;
 }

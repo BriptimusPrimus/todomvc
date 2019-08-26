@@ -31,7 +31,7 @@ const initialState = {
     {
       id: 105,
       text: 'improve state-manager lib',
-      done: false
+      done: true
     },
     {
       id: 106,

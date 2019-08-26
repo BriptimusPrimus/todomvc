@@ -14,18 +14,16 @@ function Main({ todos, onTodoClick, onRemoveClick, onAddButtonClick }) {
     'div',
     {
       id: 'main',
-      style: 'margin: 100px 10px 50px 50px;'
+      style: { margin: '100px 10px 50px 50px' }
     },
-    [
-      Todos({
-        todos,
-        onTodoClick,
-        onRemoveClick
-      }),
-      AddArea({
-        onAddButtonClick
-      })
-    ]
+    Todos({
+      todos,
+      onTodoClick,
+      onRemoveClick
+    }),
+    AddArea({
+      onAddButtonClick
+    })
   );
 }
 

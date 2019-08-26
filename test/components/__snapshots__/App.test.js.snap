@@ -3,75 +3,71 @@
 exports[`App test Should render 1`] = `
 <div
   id="main"
-  style="margin: 100px 10px 50px 50px;"
+  style="margin:100px 10px 50px 50px;"
 >
   <ul
-    style="list-style: none;"
+    style="list-style:none;"
   >
     <li
       id="101"
-      style="text-align: right;padding: 5px;margin: 2px;max-width: 200px;cursor: pointer"
+      style="text-align:right;padding:5px;margin:2px;max-width:200px;cursor:pointer;"
     >
       <span
-        style="text-decoration: line-through;"
+        style="text-decoration:line-through;"
       >
         lint with eslint
       </span>
       <a
         data-testid="remove-101"
         href="#"
-        style="margin-left: 20px"
+        style="margin-left:20px;"
       >
         X
       </a>
     </li>
     <li
       id="102"
-      style="text-align: right;padding: 5px;margin: 2px;max-width: 200px;cursor: pointer"
+      style="text-align:right;padding:5px;margin:2px;max-width:200px;cursor:pointer;"
     >
       <span
-        style="text-decoration: line-through;"
+        style="text-decoration:line-through;"
       >
         format with prettier
       </span>
       <a
         data-testid="remove-102"
         href="#"
-        style="margin-left: 20px"
+        style="margin-left:20px;"
       >
         X
       </a>
     </li>
     <li
       id="103"
-      style="text-align: right;padding: 5px;margin: 2px;max-width: 200px;cursor: pointer"
+      style="text-align:right;padding:5px;margin:2px;max-width:200px;cursor:pointer;"
     >
-      <span
-        style=""
-      >
+      <span>
         test with jest
       </span>
       <a
         data-testid="remove-103"
         href="#"
-        style="margin-left: 20px"
+        style="margin-left:20px;"
       >
         X
       </a>
     </li>
     <li
       id="104"
-      style="text-align: right;padding: 5px;margin: 2px;max-width: 200px;cursor: pointer"
+      style="text-align:right;padding:5px;margin:2px;max-width:200px;cursor:pointer;"
     >
-      <span
-        style=""
-      >
+      <span>
         hook with huskey and lint-staged
       </span>
       <a
         data-testid="remove-104"
         href="#"
-        style="margin-left: 20px"
+        style="margin-left:20px;"
       >
         X
       </a>
@@ -91,7 +87,7 @@ exports[`App test Should render 1`] = `
     />
     <button
       id="add-todo"
-      style="margin-left: 10px;"
+      style="margin-left:10px;"
     >
       Add Todo
     </button>
