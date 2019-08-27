@@ -5,28 +5,43 @@
   "main": "index.js",
   "scripts": {
     "start": "budo index.js --live",
+    "dev": "webpack-dev-server --mode development ./todomvc/index.js --output ./dist/main.js --open",
+    "build": "webpack --mode production ./todomvc/index.js --output ./dist/main.js",
     "test": "jest --coverage",
     "lint": "eslint todomvc",
     "format": "prettier \"**/*.+(js|jsx|json|css)\" --write",
     "validate-format": "prettier \"**/*.+(js|jsx|json|css)\" --list-different"
   },
   "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "snabbdom": "^0.7.0",
     "virtual-dom": "^2.1.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
     "@testing-library/dom": "^6.0.1",
+    "babel-loader": "^8.0.6",
     "budo": "^10.0.4",
+    "css-loader": "^3.2.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^2.7.0",
     "jest": "^24.8.0",
     "lint-staged": "^8.2.1",
-    "prettier": "^1.18.2"
+    "mini-css-extract-plugin": "^0.8.0",
+    "prettier": "^1.18.2",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "author": "briptimus",
   "license": "ISC"

@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars
+import style from '../src/main.css';
+
 const { place } = require('./lib/state-manager');
 const App = require('./components/App');
 
