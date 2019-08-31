@@ -1,28 +1,26 @@
-const actions = {
-  ADD_TODO: 'ADD_TODO',
-  REMOVE_TODO: 'REMOVE_TODO',
-  TOGGLE_TODO: 'TOGGLE_TODO'
-};
+const ADD_TODO = 'ADD_TODO';
+const REMOVE_TODO = 'REMOVE_TODO';
+const TOGGLE_TODO = 'TOGGLE_TODO';
 
-actions.addTodo = function addTodo(todo) {
+function addTodo(todo) {
   return {
-    type: actions.ADD_TODO,
+    type: ADD_TODO,
     todo
   };
-};
+}
 
-actions.removeTodo = function removeTodo(id) {
+function removeTodo(id) {
   return {
-    type: actions.REMOVE_TODO,
+    type: REMOVE_TODO,
     id
   };
-};
+}
 
-actions.toggleTodo = function toggleTodo(id) {
+function toggleTodo(id) {
   return {
-    type: actions.TOGGLE_TODO,
+    type: TOGGLE_TODO,
     id
   };
-};
+}
 
-module.exports = actions;
+export { ADD_TODO, REMOVE_TODO, TOGGLE_TODO, addTodo, removeTodo, toggleTodo };

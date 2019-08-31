@@ -3,7 +3,7 @@
 //     <span><a href="#">X</a></span>
 // </li>
 
-const { dom: d } = require('../lib/state-manager');
+import { dom as d } from '../lib/state-manager';
 
 function Todo({ id, text, done, onClick, onRemoveClick }) {
   function clickHandler(todoId) {
@@ -59,4 +59,4 @@ function Todo({ id, text, done, onClick, onRemoveClick }) {
   );
 }
 
-module.exports = Todo;
+export default Todo;

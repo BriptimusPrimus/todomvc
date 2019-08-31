@@ -37,6 +37,4 @@ function pubsubFactory() {
   };
 }
 
-module.exports = {
-  pubsubFactory
-};
+export default pubsubFactory;

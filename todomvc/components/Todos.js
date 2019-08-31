@@ -9,8 +9,8 @@
 //     />
 // </ul>
 
-const { dom: d } = require('../lib/state-manager');
-const Todo = require('./Todo');
+import { dom as d } from '../lib/state-manager';
+import Todo from './Todo';
 
 function Todos({ todos, onTodoClick, onRemoveClick }) {
   function resolveList() {
@@ -34,4 +34,4 @@ function Todos({ todos, onTodoClick, onRemoveClick }) {
   );
 }
 
-module.exports = Todos;
+export default Todos;

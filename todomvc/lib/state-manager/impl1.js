@@ -1,4 +1,4 @@
-const { storeFactory } = require('./store');
+import storeFactory from './store';
 
 function resolveStyle(style) {
   return Object.keys(style)
@@ -93,9 +93,4 @@ function register({ view, store, callback }) {
   return component;
 }
 
-module.exports = {
-  dom,
-  place,
-  createStore,
-  register
-};
+export { dom, place, createStore, register };

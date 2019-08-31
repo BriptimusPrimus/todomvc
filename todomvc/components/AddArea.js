@@ -3,7 +3,7 @@
 //     <button>Add Todo<button>
 // <form/>
 
-const { dom: d } = require('../lib/state-manager');
+import { dom as d } from '../lib/state-manager';
 
 function AddArea({ onAddButtonClick }) {
   function addButtonClickHandler(event) {
@@ -42,4 +42,4 @@ function AddArea({ onAddButtonClick }) {
   );
 }
 
-module.exports = AddArea;
+export default AddArea;

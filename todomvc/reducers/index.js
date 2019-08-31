@@ -1,5 +1,6 @@
-const app = require('./app');
+import app from './app';
 
-module.exports = {
+export {
+  // eslint-disable-next-line import/prefer-default-export
   app
 };

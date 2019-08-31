@@ -1,6 +1,6 @@
-const { toggleTodo, removeTodo, addTodo } = require('../actions');
+import { toggleTodo, removeTodo, addTodo } from '../actions';
 
-function controllersFactory(store) {
+export default function controllersFactory(store) {
   let count = 0;
   const { dispatch } = store;
 
@@ -41,7 +41,3 @@ function controllersFactory(store) {
     onAddButtonClick
   };
 }
-
-module.exports = {
-  controllersFactory
-};

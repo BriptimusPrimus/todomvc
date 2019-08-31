@@ -1,3 +1,3 @@
-const implementation = require('./impl1');
+import { dom, place, createStore, register } from './impl1';
 
-module.exports = implementation;
+export { dom, place, createStore, register };
