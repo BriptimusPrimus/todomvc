@@ -1,4 +1,4 @@
-const { place } = require('../todomvc/lib/state-manager');
+import { place } from '../todomvc/lib/state-manager';
 
 function render(component) {
   const root = document.createElement('div');
@@ -18,7 +18,4 @@ function cleanup() {
   parentNode.removeChild(root);
 }
 
-module.exports = {
-  render,
-  cleanup
-};
+export { render, cleanup };

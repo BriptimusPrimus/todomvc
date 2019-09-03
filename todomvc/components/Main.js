@@ -5,9 +5,9 @@
 //     <AddArea />
 // </div>
 
-const { dom: d } = require('../lib/state-manager');
-const Todos = require('./Todos');
-const AddArea = require('./AddArea');
+import { dom as d } from '../lib/state-manager';
+import Todos from './Todos';
+import AddArea from './AddArea';
 
 function Main({ todos, onTodoClick, onRemoveClick, onAddButtonClick }) {
   return d(
@@ -27,4 +27,4 @@ function Main({ todos, onTodoClick, onRemoveClick, onAddButtonClick }) {
   );
 }
 
-module.exports = Main;
+export default Main;

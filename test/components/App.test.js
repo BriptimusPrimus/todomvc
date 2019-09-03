@@ -1,12 +1,12 @@
-const {
+import {
   getByText,
   getByLabelText,
   queryByText,
   getByTestId
-} = require('@testing-library/dom');
-const App = require('../../todomvc/components/App');
+} from '@testing-library/dom';
 
-const { render, cleanup } = require('../utils');
+import App from '../../todomvc/components/App';
+import { render, cleanup } from '../utils';
 
 describe('App test', () => {
   let mockProps = {};

@@ -1,4 +1,4 @@
-const { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } = require('../actions');
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actions';
 
 function todos(state, action) {
   switch (action.type) {
@@ -41,4 +41,4 @@ function app(state, action) {
   };
 }
 
-module.exports = app;
+export default app;

@@ -1,7 +1,7 @@
-const { createStore, register } = require('../lib/state-manager');
-const Main = require('./Main');
-const { app: reducer } = require('../reducers');
-const { controllersFactory } = require('../controllers');
+import { createStore, register } from '../lib/state-manager';
+import Main from './Main';
+import { app as reducer } from '../reducers';
+import controllersFactory from '../controllers';
 
 const App = function App({ initialState, callback }) {
   // Returns a store with a dispatch function to
@@ -34,4 +34,4 @@ const App = function App({ initialState, callback }) {
   return component;
 };
 
-module.exports = App;
+export default App;

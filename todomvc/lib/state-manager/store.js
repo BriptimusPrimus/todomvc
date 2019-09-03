@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-const { pubsubFactory } = require('./pubsub');
+import pubsubFactory from './pubsub';
 
 function storeFactory(state, reducer) {
   let _state = state || {};
@@ -40,6 +40,4 @@ function storeFactory(state, reducer) {
   };
 }
 
-module.exports = {
-  storeFactory
-};
+export default storeFactory;

@@ -1,5 +1,7 @@
-const { place } = require('./lib/state-manager');
-const App = require('./components/App');
+// eslint-disable-next-line no-unused-vars
+import style from '../src/main.css';
+import { place } from './lib/state-manager';
+import App from './components/App';
 
 const initialState = {
   todos: [
@@ -60,9 +62,7 @@ function domReady() {
   }
 }
 
-const root = document.createElement('div');
-root.id = 'root';
-document.body.appendChild(root);
+const root = document.getElementById('root');
 
 place(
   App({
