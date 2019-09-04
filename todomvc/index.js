@@ -42,11 +42,16 @@ const initialState = {
     },
     {
       id: 107,
-      text: 'write tic tac toe app',
+      text: 'clean up',
       done: false
     },
     {
       id: 108,
+      text: 'write tic tac toe app',
+      done: false
+    },
+    {
+      id: 109,
       text: 'transpile jsx',
       done: false
     }

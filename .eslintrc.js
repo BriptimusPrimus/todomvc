@@ -5,6 +5,10 @@ module.exports = {
     jest: true
   },
   rules: {
-    'prefer-object-spread': [0]
+    'prefer-object-spread': [0],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/webpack.*.js'] }
+    ]
   }
 };
