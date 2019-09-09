@@ -1,38 +1,9 @@
-// tutorial: https://www.valentinog.com/blog/webpack/
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const merge = require('webpack-merge');
+const common = require('./webpack.common');
+const productionConfig = require('./webpack.prod');
+const developmentConfig = require('./webpack.dev');
 
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.html$/,
-        use: {
-          loader: 'html-loader',
-          options: { minimize: true }
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
-    ]
-  },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
-    })
-  ]
+module.exports = env => {
+  const config = env === 'production' ? productionConfig : developmentConfig;
+  return merge(common, config);
 };

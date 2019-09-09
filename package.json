@@ -1,12 +1,12 @@
 {
   "name": "todomvc",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "budo index.js --live",
-    "dev": "webpack-dev-server --mode development ./todomvc/index.js --output ./dist/main.js --open",
-    "build": "webpack --mode production ./todomvc/index.js --output ./dist/main.js",
+    "dev": "webpack-dev-server --open --env development",
+    "build": "webpack --env production",
     "test": "jest --coverage",
     "lint": "eslint todomvc",
     "format": "prettier \"**/*.+(js|jsx|json|css)\" --write",
@@ -25,6 +25,7 @@
     "@testing-library/dom": "^6.0.1",
     "babel-loader": "^8.0.6",
     "budo": "^10.0.4",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -41,7 +42,8 @@
     "prettier": "^1.18.2",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.2"
   },
   "author": "briptimus",
   "license": "ISC"
