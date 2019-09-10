@@ -49,7 +49,11 @@ function dom(element, attributes = {}, ...children) {
         ? document.createTextNode(child)
         : child
     )
-    .forEach(child => newEl.appendChild(child));
+    .forEach(child => {
+      if (child !== undefined && child !== null) {
+        newEl.appendChild(child);
+      }
+    });
 
   return newEl;
 }
