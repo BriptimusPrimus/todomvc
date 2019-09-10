@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    main: './todomvc/index.js',
+    main: './tic-tac-toe/index.js',
     stateManagerLib: './todomvc/lib/state-manager'
   },
   output: {

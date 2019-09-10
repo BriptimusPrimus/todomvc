@@ -45,7 +45,9 @@ function dom(element, attributes = {}, ...children) {
   // Append children
   flattenArray(children)
     .map(child =>
-      typeof child === 'string' ? document.createTextNode(child) : child
+      typeof child === 'string' || typeof child === 'number'
+        ? document.createTextNode(child)
+        : child
     )
     .forEach(child => newEl.appendChild(child));
 
