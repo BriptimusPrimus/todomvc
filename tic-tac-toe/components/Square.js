@@ -10,9 +10,7 @@ function Square({ value, onClick }) {
     {
       class: 'square',
       on: {
-        click: () => {
-          onClick();
-        }
+        click: onClick
       }
     },
     value

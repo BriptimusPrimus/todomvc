@@ -26,18 +26,20 @@ import Square from './Square';
 // </div>
 function Board() {
   const store = createStore({
-    squares: Array(9).fill(null)
+    squares: Array(9).fill(null),
+    xIsNext: true
   });
 
   function view(state) {
-    const status = 'Next player: X';
-
     function handleOnClick(i) {
       const squares = state.squares.slice();
-      squares[i] = 'X';
+      squares[i] = state.xIsNext ? 'X' : 'O';
       store.dispatch(
         {
-          state: { squares }
+          state: {
+            squares,
+            xIsNext: !state.xIsNext
+          }
         },
         true
       );
@@ -51,6 +53,8 @@ function Board() {
         }
       });
     }
+
+    const status = `Next player: ${state.xIsNext ? 'X' : 'O'}`;
 
     return d(
       'div',
