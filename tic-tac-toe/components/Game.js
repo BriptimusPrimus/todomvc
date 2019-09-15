@@ -69,9 +69,26 @@ function Game() {
       );
     }
 
+    function jumpTo() {}
+
     const { history } = state;
     const current = history[history.length - 1];
     const winner = calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+      const desc = move ? `Go to move # ${move}` : 'Go to game start';
+      return d(
+        'li',
+        undefined,
+        d(
+          'button',
+          {
+            on: { click: jumpTo() }
+          },
+          desc
+        )
+      );
+    });
 
     let status;
     if (winner) {
@@ -101,11 +118,7 @@ function Game() {
           class: 'game-info'
         },
         d('div', {}, status),
-        d(
-          'ol',
-          {}
-          // {/* TODO */}
-        )
+        d('ol', {}, moves)
       )
     );
   }
