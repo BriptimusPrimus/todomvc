@@ -9,7 +9,7 @@ function storeFactory(state, reducer) {
     pubsub.subscribe('STATE_UPDATED', fn);
   }
 
-  function dispatch(action, trigger) {
+  function dispatch(action, trigger = true) {
     let newState;
 
     // Reduce the state according to the action

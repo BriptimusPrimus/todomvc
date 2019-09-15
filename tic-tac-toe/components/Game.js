@@ -55,32 +55,26 @@ function Game() {
         return;
       }
       squares[i] = state.xIsNext ? 'X' : 'O';
-      store.dispatch(
-        {
-          state: {
-            history: history.concat([
-              {
-                squares
-              }
-            ]),
-            stepNumber: history.length,
-            xIsNext: !state.xIsNext
-          }
-        },
-        true
-      );
+      store.dispatch({
+        state: {
+          history: history.concat([
+            {
+              squares
+            }
+          ]),
+          stepNumber: history.length,
+          xIsNext: !state.xIsNext
+        }
+      });
     }
 
     function jumpTo(step) {
-      store.dispatch(
-        {
-          state: {
-            stepNumber: step,
-            xIsNext: step % 2 === 0
-          }
-        },
-        true
-      );
+      store.dispatch({
+        state: {
+          stepNumber: step,
+          xIsNext: step % 2 === 0
+        }
+      });
     }
 
     const { history, stepNumber } = state;
