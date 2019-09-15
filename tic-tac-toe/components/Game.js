@@ -1,5 +1,29 @@
-import { dom as d } from '../../todomvc/lib/state-manager';
+import {
+  dom as d,
+  createStore,
+  register
+} from '../../todomvc/lib/state-manager';
 import Board from './Board';
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i += 1) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
 
 // Game
 // <div class="game">
@@ -12,35 +36,86 @@ import Board from './Board';
 //   </div>
 // </div>
 function Game() {
-  return d(
-    'div',
-    {
-      class: 'game'
-    },
-    d(
+  const store = createStore({
+    history: [
+      {
+        squares: Array(9).fill(null)
+      }
+    ],
+    xIsNext: true
+  });
+
+  function view(state) {
+    function handleClick(i) {
+      const { history } = state;
+      const current = history[history.length - 1];
+      const squares = current.squares.slice();
+      if (calculateWinner(squares) || squares[i]) {
+        return;
+      }
+      squares[i] = state.xIsNext ? 'X' : 'O';
+      store.dispatch(
+        {
+          state: {
+            history: history.concat([
+              {
+                squares
+              }
+            ]),
+            xIsNext: !state.xIsNext
+          }
+        },
+        true
+      );
+    }
+
+    const { history } = state;
+    const current = history[history.length - 1];
+    const winner = calculateWinner(current.squares);
+
+    let status;
+    if (winner) {
+      status = `Winner: ${winner}`;
+    } else {
+      status = `Next player: ${state.xIsNext ? 'X' : 'O'}`;
+    }
+
+    return d(
       'div',
       {
-        class: 'game-board'
-      },
-      Board()
-    ),
-    d(
-      'div',
-      {
-        class: 'game-info'
+        class: 'game'
       },
       d(
         'div',
-        {}
-        // {/* status */}
+        {
+          class: 'game-board'
+        },
+        Board({
+          squares: current.squares,
+          onClick: handleClick
+        })
       ),
       d(
-        'ol',
-        {}
-        // {/* TODO */}
+        'div',
+        {
+          class: 'game-info'
+        },
+        d('div', {}, status),
+        d(
+          'ol',
+          {}
+          // {/* TODO */}
+        )
       )
-    )
-  );
+    );
+  }
+
+  const component = register({
+    view,
+    store
+  });
+
+  return component;
 }
 
 export default Game;
