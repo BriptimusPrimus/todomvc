@@ -1,3 +1,4 @@
+/** @jsx d */
 import {
   dom as d,
   createStore,
@@ -25,16 +26,6 @@ function calculateWinner(squares) {
   return null;
 }
 
-// Game
-// <div class="game">
-//   <div class="game-board">
-//     <Board />
-//   </div>
-//   <div class="game-info">
-//     <div>{/* status */}</div>
-//     <ol>{/* TODO */}</ol>
-//   </div>
-// </div>
 function Game() {
   const store = createStore({
     history: [
@@ -83,20 +74,31 @@ function Game() {
 
     const moves = history.map((step, move) => {
       const desc = move ? `Go to move # ${move}` : 'Go to game start';
-      return d(
-        'li',
-        undefined,
-        d(
-          'button',
-          {
-            on: {
-              click: () => {
-                jumpTo(move);
-              }
-            }
-          },
-          desc
-        )
+      // return d(
+      //   'li',
+      //   undefined,
+      //   d(
+      //     'button',
+      //     {
+      //       on: {
+      //         click: () => {
+      //           jumpTo(move);
+      //         }
+      //       }
+      //     },
+      //     desc
+      //   )
+      // );
+      return (
+        <li>
+          <button
+            on={{
+              click: () => jumpTo(move)
+            }}
+          >
+            {desc}
+          </button>
+        </li>
       );
     });
 
@@ -107,29 +109,41 @@ function Game() {
       status = `Next player: ${state.xIsNext ? 'X' : 'O'}`;
     }
 
-    return d(
-      'div',
-      {
-        class: 'game'
-      },
-      d(
-        'div',
-        {
-          class: 'game-board'
-        },
-        Board({
-          squares: current.squares,
-          onClick: handleClick
-        })
-      ),
-      d(
-        'div',
-        {
-          class: 'game-info'
-        },
-        d('div', {}, status),
-        d('ol', {}, moves)
-      )
+    // return d(
+    //   'div',
+    //   {
+    //     class: 'game'
+    //   },
+    //   d(
+    //     'div',
+    //     {
+    //       class: 'game-board'
+    //     },
+    //     Board({
+    //       squares: current.squares,
+    //       onClick: handleClick
+    //     })
+    //   ),
+    //   d(
+    //     'div',
+    //     {
+    //       class: 'game-info'
+    //     },
+    //     d('div', {}, status),
+    //     d('ol', {}, moves)
+    //   )
+    // );
+
+    return (
+      <div class='game'>
+        <div class='game-board'>
+          <Board squares={current.squares} onClick={handleClick} />
+        </div>
+        <div class='game-info'>
+          <div>{status}</div>
+          <ol>{moves}</ol>
+        </div>
+      </div>
     );
   }
 

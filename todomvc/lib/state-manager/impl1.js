@@ -18,11 +18,17 @@ function flattenArray(arr) {
   return result;
 }
 
-function dom(element, attributes = {}, ...children) {
+function dom(element, props = {}, ...children) {
+  // Element is a function, then it is a component
+  if (typeof element === 'function') {
+    return element(props);
+  }
+
   // Create new DOM element
   const newEl = document.createElement(element);
 
   // Set element attributes
+  const attributes = props || {};
   Object.keys(attributes)
     .filter(item => {
       return item !== 'on' && item !== 'style';
