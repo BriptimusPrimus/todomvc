@@ -6,6 +6,7 @@ module.exports = {
   collectCoverageFrom: [
     'todomvc/**/*.js',
     '!todomvc/index.js',
+    '!todomvc/components/**',
     '!todomvc/lib/state-manager/**'
   ],
   coverageDirectory: './coverage',

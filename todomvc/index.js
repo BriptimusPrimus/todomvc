@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import style from '../src/main.css';
 import { place } from './lib/state-manager';
-import App from './components/App';
+import App from './jsx-components/App';
 
 const initialState = {
   todos: [
@@ -38,17 +38,17 @@ const initialState = {
     {
       id: 106,
       text: 'build with webpack',
-      done: false
+      done: true
     },
     {
       id: 107,
       text: 'clean up',
-      done: false
+      done: true
     },
     {
       id: 108,
       text: 'write tic tac toe app',
-      done: false
+      done: true
     },
     {
       id: 109,
