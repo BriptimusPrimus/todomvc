@@ -5,7 +5,7 @@
 //     <AddArea />
 // </div>
 
-import { dom as d } from '../lib/state-manager';
+import { dom as d } from '../lib/state-ui-lib';
 import Todos from './Todos';
 import AddArea from './AddArea';
 

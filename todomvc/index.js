@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import style from '../src/main.css';
-import { place } from './lib/state-manager';
+import { place } from './lib/state-ui-lib';
 import App from './jsx-components/App';
 
 const initialState = {

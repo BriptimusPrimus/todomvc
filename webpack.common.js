@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: {
     main: './todomvc',
-    stateManagerLib: './todomvc/lib/state-manager'
+    stateUiLib: './todomvc/lib/state-ui-lib'
   },
   output: {
     filename: '[name].[contenthash].bundle.js',

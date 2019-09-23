@@ -1,4 +1,4 @@
-import { dom, createStore, register } from '../lib/state-manager';
+import { dom, createStore, register } from '../lib/state-ui-lib';
 import Main from './Main';
 import { app as reducer } from '../reducers';
 import controllersFactory from '../controllers';

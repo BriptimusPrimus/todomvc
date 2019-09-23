@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { dom } from '../lib/state-manager';
+import { dom } from '../lib/state-ui-lib';
 
 function AddArea({ onAddButtonClick }) {
   function addButtonClickHandler(event) {
