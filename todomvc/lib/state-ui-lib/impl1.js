@@ -1,31 +1,15 @@
 import storeFactory from './store';
 
-function resolveStyle(style) {
-  return Object.keys(style)
-    .map(key => `${key}:${style[key]};`)
-    .join('');
-}
+import { resolveStyle, flattenArray } from './helpers';
 
-function flattenArray(arr) {
-  let result = [];
-  arr.forEach(item => {
-    if (Array.isArray(item)) {
-      result = result.concat(flattenArray(item));
-    } else {
-      result.push(item);
-    }
-  });
-  return result;
-}
-
-function dom(element, props = {}, ...children) {
-  // Element is a function, then it is a component
-  if (typeof element === 'function') {
-    return element(props);
+function dom(elType, props = {}, ...children) {
+  // Element type is a function, then it is a component
+  if (typeof elType === 'function') {
+    return elType(props, children);
   }
 
   // Create new DOM element
-  const newEl = document.createElement(element);
+  const newEl = document.createElement(elType);
 
   // Set element attributes
   const attributes = props || {};

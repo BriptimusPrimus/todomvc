@@ -14,7 +14,7 @@ function AddArea({ onAddButtonClick }) {
 
   return d(
     'form',
-    {},
+    null,
     d(
       'label',
       {

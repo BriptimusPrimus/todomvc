@@ -9,7 +9,7 @@ export default function controllersFactory(store) {
       return;
     }
 
-    dispatch(toggleTodo(id), true);
+    dispatch(toggleTodo(id));
   }
 
   function onRemoveClick(id) {
@@ -17,7 +17,7 @@ export default function controllersFactory(store) {
       return;
     }
 
-    dispatch(removeTodo(id), true);
+    dispatch(removeTodo(id));
   }
 
   function onAddButtonClick(text) {
@@ -30,8 +30,7 @@ export default function controllersFactory(store) {
       addTodo({
         id: count,
         text
-      }),
-      true
+      })
     );
   }
 
