@@ -11,10 +11,7 @@
     "format": "prettier \"**/*.+(js|jsx|json|css)\" --write",
     "validate-format": "prettier \"**/*.+(js|jsx|json|css)\" --list-different"
   },
-  "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",

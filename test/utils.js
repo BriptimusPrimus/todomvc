@@ -1,4 +1,4 @@
-import { place } from '../todomvc/lib/state-manager';
+import { place } from '../todomvc/lib/state-ui-lib';
 
 function render(component) {
   const root = document.createElement('div');

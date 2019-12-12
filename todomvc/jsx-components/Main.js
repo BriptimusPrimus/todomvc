@@ -1,4 +1,4 @@
-import { dom } from '../lib/state-manager';
+import { dom } from '../lib/state-ui-lib';
 import Todos from './Todos';
 import AddArea from './AddArea';
 

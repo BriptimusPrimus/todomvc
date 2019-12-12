@@ -9,7 +9,7 @@
 //     />
 // </ul>
 
-import { dom as d } from '../lib/state-manager';
+import { dom as d } from '../lib/state-ui-lib';
 import Todo from './Todo';
 
 function Todos({ todos, onTodoClick, onRemoveClick }) {

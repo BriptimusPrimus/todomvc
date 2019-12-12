@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { dom } from '../lib/state-manager';
+import { dom } from '../lib/state-ui-lib';
 
 function Todo({ id, text, done, onClick, onRemoveClick }) {
   function clickHandler(todoId) {

@@ -3,7 +3,7 @@
 //     <span><a href="#">X</a></span>
 // </li>
 
-import { dom as d } from '../lib/state-manager';
+import { dom as d } from '../lib/state-ui-lib';
 
 function Todo({ id, text, done, onClick, onRemoveClick }) {
   function clickHandler(todoId) {

@@ -5,10 +5,10 @@
 
 // Replace ### + jsx with @ + jsx to render with React
 /** ###jsx React.createElement */
-import React from 'react';
-import ReactDOM from 'react-dom';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
 
-import { dom, place } from '../todomvc/lib/state-manager/impl1';
+import { dom, place } from '../todomvc/lib/state-ui-lib';
 
 import style from './main.css';
 import App from './App';

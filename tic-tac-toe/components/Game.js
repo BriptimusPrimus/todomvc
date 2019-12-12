@@ -3,7 +3,7 @@ import {
   dom as d,
   createStore,
   register
-} from '../../todomvc/lib/state-manager';
+} from '../../todomvc/lib/state-ui-lib';
 import Board from './Board';
 
 function calculateWinner(squares) {

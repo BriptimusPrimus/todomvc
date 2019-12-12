@@ -1,5 +1,5 @@
 /** @jsx d */
-import { dom as d } from '../../todomvc/lib/state-manager';
+import { dom as d } from '../../todomvc/lib/state-ui-lib';
 
 // function Square({ value, onClick }) {
 //   return d(

@@ -3,7 +3,7 @@
 //     <button>Add Todo<button>
 // <form/>
 
-import { dom as d } from '../lib/state-manager';
+import { dom as d } from '../lib/state-ui-lib';
 
 function AddArea({ onAddButtonClick }) {
   function addButtonClickHandler(event) {
@@ -14,7 +14,7 @@ function AddArea({ onAddButtonClick }) {
 
   return d(
     'form',
-    {},
+    null,
     d(
       'label',
       {
