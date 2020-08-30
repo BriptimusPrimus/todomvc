@@ -61,32 +61,45 @@ function createStore(state = {}, reducer) {
   return storeFactory(state, reducer);
 }
 
-function register({ view, store, callback }) {
-  if (!view || !store) {
+function useReducer({ initialState, reducer, callback }) {
+  if (!initialState || !reducer) {
     return undefined;
   }
-  // Use initial state when rendering component for the first time
-  let component = view(store.getState());
 
-  function render(newState) {
-    // Create new version of the component using new state
-    const newComponent = view(newState);
+  let node;
 
-    // Replace old version with new version
-    const { parentNode } = component;
-    parentNode.replaceChild(newComponent, component);
+  function createRender(view) {
+    return function render(newState) {
+      // Create new version of the node using new state
+      const newNode = view(newState);
 
-    // Hold currently active node for the next time
-    component = newComponent;
+      // Replace old version with new version
+      const { parentNode } = node;
+      parentNode.replaceChild(newNode, node);
 
-    // Execute callback if any
-    if (callback) {
-      callback();
-    }
+      // Hold currently active node for the next time
+      node = newNode;
+
+      // Execute callback if any
+      if (callback) {
+        callback();
+      }
+    };
   }
 
-  store.subscribe(render);
-  return component;
+  // Create a store with a dispatch function to
+  // trigger state changes by dispatching actions.
+  const store = createStore(initialState, reducer);
+
+  function createNode(viewFn) {
+    // Use initial state when rendering component for the first time
+    node = viewFn(store.getState());
+    const renderSnapshot = createRender(viewFn);
+    store.subscribe(renderSnapshot);
+    return node;
+  }
+
+  return [createNode, store.dispatch];
 }
 
-export { dom, place, createStore, register };
+export { dom, place, useReducer };

@@ -1,18 +1,47 @@
-import { dom, createStore, register } from '../lib/state-ui-lib';
+import { dom, useReducer } from '../lib/state-ui-lib';
 import Main from './Main';
 import { app as reducer } from '../reducers';
-import controllersFactory from '../controllers';
+import { toggleTodo, removeTodo, addTodo } from '../actions';
+
+let count = 0;
 
 const App = function App({ initialState, callback }) {
-  // Returns a store with a dispatch function to
-  // trigger state changes by dispatching actions.
-  const store = createStore(initialState, reducer);
+  // In order to make a component stateful, we must
+  // register the rendering function (view) with the inner store.
+  const [createNode, dispatch] = useReducer({
+    initialState,
+    reducer,
+    callback
+  });
 
-  const { onTodoClick, onRemoveClick, onAddButtonClick } = controllersFactory(
-    store
-  );
+  const onTodoClick = id => {
+    if (!id) {
+      return;
+    }
+    dispatch(toggleTodo(id));
+  };
 
-  function view(state) {
+  const onRemoveClick = id => {
+    if (!id) {
+      return;
+    }
+    dispatch(removeTodo(id));
+  };
+
+  const onAddButtonClick = text => {
+    if (!text) {
+      return;
+    }
+    count += 1;
+    dispatch(
+      addTodo({
+        id: count,
+        text
+      })
+    );
+  };
+
+  const view = state => {
     return (
       <Main
         todos={state.todos}
@@ -21,19 +50,11 @@ const App = function App({ initialState, callback }) {
         onAddButtonClick={onAddButtonClick}
       />
     );
-  }
-
-  // In order to make a component stateful, we must
-  // register the rendering function (view) with the store.
-  const component = register({
-    view,
-    store,
-    callback
-  });
+  };
 
   // All component functions (stateless or stateful)
   // must return the root component node
-  return component;
+  return createNode(view);
 };
 
 export default App;

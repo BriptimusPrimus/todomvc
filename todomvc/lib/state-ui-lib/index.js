@@ -1,3 +1,3 @@
-import { dom, place, createStore, register } from './impl1';
+import { dom, place, useReducer } from './impl1';
 
-export { dom, place, createStore, register };
+export { dom, place, useReducer };
