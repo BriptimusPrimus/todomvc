@@ -1,9 +1,5 @@
 /** @jsx d */
-import {
-  dom as d,
-  createStore,
-  register
-} from '../../todomvc/lib/state-ui-lib';
+import { dom as d, useReducer } from '../../todomvc/lib/state-ui-lib';
 import Board from './Board';
 
 function calculateWinner(squares) {
@@ -27,14 +23,16 @@ function calculateWinner(squares) {
 }
 
 function Game() {
-  const store = createStore({
-    history: [
-      {
-        squares: Array(9).fill(null)
-      }
-    ],
-    stepNumber: 0,
-    xIsNext: true
+  const [createNode, dispatch] = useReducer({
+    initialState: {
+      history: [
+        {
+          squares: Array(9).fill(null)
+        }
+      ],
+      stepNumber: 0,
+      xIsNext: true
+    }
   });
 
   function view(state) {
@@ -46,7 +44,7 @@ function Game() {
         return;
       }
       squares[i] = state.xIsNext ? 'X' : 'O';
-      store.dispatch({
+      dispatch({
         state: {
           history: history.concat([
             {
@@ -60,7 +58,7 @@ function Game() {
     }
 
     function jumpTo(step) {
-      store.dispatch({
+      dispatch({
         state: {
           stepNumber: step,
           xIsNext: step % 2 === 0
@@ -147,12 +145,7 @@ function Game() {
     );
   }
 
-  const component = register({
-    view,
-    store
-  });
-
-  return component;
+  return createNode(view);
 }
 
 export default Game;
