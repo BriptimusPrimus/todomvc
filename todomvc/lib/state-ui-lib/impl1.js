@@ -1,5 +1,4 @@
 import storeFactory from './store';
-
 import { resolveStyle, flattenArray } from './helpers';
 
 function dom(elType, props = {}, ...children) {
@@ -62,12 +61,10 @@ function createStore(state = {}, reducer) {
 }
 
 function useReducer({ initialState, reducer, callback }) {
-  if (!initialState || !reducer) {
+  if (!initialState) {
     return undefined;
   }
-
   let node;
-
   function createRender(view) {
     return function render(newState) {
       // Create new version of the node using new state
@@ -86,11 +83,9 @@ function useReducer({ initialState, reducer, callback }) {
       }
     };
   }
-
   // Create a store with a dispatch function to
   // trigger state changes by dispatching actions.
   const store = createStore(initialState, reducer);
-
   function createNode(viewFn) {
     // Use initial state when rendering component for the first time
     node = viewFn(store.getState());
@@ -98,7 +93,6 @@ function useReducer({ initialState, reducer, callback }) {
     store.subscribe(renderSnapshot);
     return node;
   }
-
   return [createNode, store.dispatch];
 }
 
