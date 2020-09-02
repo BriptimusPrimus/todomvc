@@ -13,12 +13,7 @@ function storeFactory(state, reducer) {
     let newState;
 
     // Reduce the state according to the action
-    if (reducer) {
-      newState = reducer(_state, action);
-      // No reducer, merge old and new states
-    } else {
-      newState = Object.assign({}, _state, action.state);
-    }
+    newState = reducer(_state, action);
     _state = newState;
 
     // Avoid making DOM changes when trigger flag off

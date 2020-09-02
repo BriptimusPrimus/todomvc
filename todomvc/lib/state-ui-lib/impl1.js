@@ -2,49 +2,16 @@ import storeFactory from './store';
 import { resolveStyle, flattenArray } from './helpers';
 
 function dom(elType, props = {}, ...children) {
-  // Element type is a function, then it is a component
-  if (typeof elType === 'function') {
-    return elType(props, children);
-  }
-
   // Create new DOM element
-  const newEl = document.createElement(elType);
 
   // Set element attributes
-  const attributes = props || {};
-  Object.keys(attributes)
-    .filter(item => {
-      return item !== 'on' && item !== 'style';
-    })
-    .forEach(key => {
-      newEl.setAttribute(key, attributes[key]);
-    });
 
   // Set style
-  if (attributes.style !== undefined && attributes.style !== null) {
-    newEl.setAttribute('style', resolveStyle(attributes.style));
-  }
 
   // Bind events
-  const events = attributes.on || {};
-  Object.keys(events).forEach(evt => {
-    newEl.addEventListener(evt, events[evt]);
-  });
 
   // Append children
-  flattenArray(children)
-    .map(child =>
-      typeof child === 'string' || typeof child === 'number'
-        ? document.createTextNode(child)
-        : child
-    )
-    .forEach(child => {
-      if (child !== undefined && child !== null) {
-        newEl.appendChild(child);
-      }
-    });
 
-  return newEl;
 }
 
 function place(el, container) {
@@ -61,9 +28,6 @@ function createStore(state = {}, reducer) {
 }
 
 function useReducer({ initialState, reducer, callback }) {
-  if (!initialState) {
-    return undefined;
-  }
   let node;
   function createRender(view) {
     return function render(newState) {

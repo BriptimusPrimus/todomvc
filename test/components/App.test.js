@@ -6,7 +6,7 @@ import {
   getByTestId
 } from '@testing-library/dom';
 
-import App from '../../todomvc/jsx-components/App';
+import App from '../../todomvc/components/App';
 import { render, cleanup } from '../utils';
 
 describe('App test', () => {
