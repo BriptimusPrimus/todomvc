@@ -1,6 +1,7 @@
 module.exports = {
-  linters: {
-    '*.+(js|jsx)': ['eslint', 'jest --findRelatedTests --coverageThreshold {}'],
-    '**/*.+(js|jsx|json|css)': ['prettier --write', 'git add']
-  }
+  '*.(js,jsx)': [
+    'eslint',
+    files => `jest --findRelatedTests --coverageThreshold ${files.join(' ')}`
+  ],
+  '*.{js,jsx,json,css}': ['prettier --write', 'git add']
 };
